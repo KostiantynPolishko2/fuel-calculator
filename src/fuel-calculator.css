@@ -1,0 +1,76 @@
+:root{
+    --form-width: 700px;
+    --form-height: 500px;
+    --input-height: 50px;
+    --input-width: 400px;
+    --intend-left: 15px;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+form{
+    height: var(--form-height);
+    width: var(--form-width);
+    background-color: grey;
+    align-content: center;
+}
+
+form > div{
+    width: 90%;
+    margin: auto;
+    background-color: aqua;
+}
+
+input{
+    height: var(--input-height);
+    width: var(--input-width);
+    border: 1px solid rgb(204, 204, 204);
+    border-radius: 5px;
+}
+
+div.title{
+    margin-top: 10px;
+}
+
+div.title > p {
+    font-size: 25px;
+    font-weight: 600;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    line-height: 100%;
+}
+
+div.name{
+    margin-top: 23px;
+    margin-bottom: 12px;
+}
+
+div.name > label {
+    font-size: 18px;
+    font-weight: 500;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.input-field{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.input-field > input {
+    font-size: 24px;
+    text-indent: var(--intend-left);
+    cursor: pointer;
+}
+
+div.input-field > p{
+    background-color: blue;
+    font-size: 20px;
+    margin-left: var(--intend-left);
+}
+
+p.note{
+    color: red;
+}
