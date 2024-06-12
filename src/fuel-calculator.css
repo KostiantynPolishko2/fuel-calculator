@@ -43,6 +43,12 @@ button{
     font-size: 24px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: 500;
+    cursor: pointer;
+}
+
+button.disabled{
+    opacity: 0.6;
+    cursor: not-allowed;
 }
 
 div.title{
