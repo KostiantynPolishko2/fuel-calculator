@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import './App.css';
 import './fuel-calculator.css';
 
+const regex = /^\d+.?\d+$/;
+
 function App() {
 
-  // disabled={isDistance? 'disabled' : ''}
   const [isDistance, setIsDistance] = useState(false);
   const [distance, setDistance] = useState(0);
 
@@ -16,9 +17,17 @@ function App() {
 
   const [cost, setCost] = useState(0);
 
+  const btnClear = <button onClick={()=>{refForm.current.reset(); refCost.current.textContent=''}} type='button' name='clear' form='fuel-calculation'>Reset</button>;
+  const refForm = useRef(null);
+  const refCost = useRef(null);
+
   const setStateDistance = (e) => {
-    if(isDigitValue(e)){ setIsDistance(true); setDistance(getDigitValue(e));}
-    else{ setIsDistance(false); setDistance(0);}
+    if(isDigitValue(e)){ 
+      setIsDistance(true); 
+      setDistance(getDigitValue(e));}
+    else{ 
+      setIsDistance(false); 
+      setDistance(0);}
   }
   
   const setStateConsume = (e) => {
@@ -33,7 +42,7 @@ function App() {
 
   return (
     <div class='App-header'>
-      <form id='fuel-calculation'>
+      <form id='fuel-calculation' ref={refForm}>
         <div class='title'>
           <p>Стоимость поездки</p>
         </div>
@@ -42,9 +51,9 @@ function App() {
           <label for='distance'>Расстояние</label>
         </div> 
         <div class='input-field'>
-          <input onBlur={setStateDistance} type='text' id='distance' name='distance_km' placeholder='введите километраж' autoFocus></input>
+          <input onBlur={setStateDistance} type='text' id='distance' name='distance_km' pattern={regex} placeholder='введите километраж' autoFocus></input>
           <p>км</p>
-          <p class='note'>{errorInfo(isDistance, distance)}</p>
+          {/* <p class='note'>{errorInfo(isDistance, distance)}</p> */}
         </div>
 
         {/* BLOCK AVERAGE CONSUMENION */}
@@ -52,9 +61,8 @@ function App() {
           <label for='consume'>Средний расход топлива</label>
         </div> 
         <div class='input-field'>
-          <input onBlur={setStateConsume} type='text' id='consume' name='consume_lkm' placeholder='введите рассход' disabled={!isDistance? 'disabled' : ''}></input>
+          <input onBlur={setStateConsume} type='text' id='consume' name='consume_lkm' pattern={regex} placeholder='введите рассход' disabled={!isDistance? 'disabled' : ''}></input>
           <p>л./100км</p>
-          <p class='note'>{errorInfo(isConsume, consume)}</p>
         </div>
 
         {/* BLOCK PRICE */}
@@ -62,15 +70,15 @@ function App() {
           <label for='price'>Стоимость 1 л. топлива</label>
         </div> 
         <div class='input-field'>
-          <input onBlur={setStatePrice} type='text' id='price' name='price_uah' placeholder='введите цену' disabled={!isConsume? 'disabled' : ''}></input>
+          <input onBlur={setStatePrice} type='text' id='price' name='price_uah' pattern={regex} placeholder='введите цену' disabled={!isConsume? 'disabled' : ''}></input>
           <p>грн/літр</p>
-          <p class='note'>{errorInfo(isPrice, price)}</p>
         </div>
 
         {/* BUTTON */}
         <div class='input-field' style={{marginTop: 25 + 'px'}}>
-          <button onClick={() => setCost(calcCost(distance, consume, price))} type='button' name='cost' form='fuel-calculation' className={isPrice? '' : 'disabled'}>Рассчитать</button>
-          <p class='cost' style={{width: 50 + '%'}}>{cost ? `${cost} UAH` : ''}</p>
+          <button onClick={() => setCost(calcCost(distance, consume, price))} type='button' name='cost' form='fuel-calculation' disabled={!isPrice? 'disabled' : ''}>Рассчитать</button>
+          <p class='cost' style={{width: 50 + '%'}} ref={refCost}>{cost ? `${cost} UAH` : ''}</p>
+          {btnClear}
         </div>
 
       </form>  
@@ -91,8 +99,7 @@ const errorInfo = (flag, value) => {
 }
 
 const isDigitValue = (e) => {
-  const exp = /^\d+.?\d+$/;
-  return exp.test(e.target.value);
+  return regex.test(e.target.value);
 }
 
 const getDigitValue = (e) => {

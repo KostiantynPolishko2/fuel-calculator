@@ -33,6 +33,14 @@ input{
     border-radius: 5px;
 }
 
+input:valid{
+    background-color: palegreen;
+}
+
+/* input:invalid{
+    background-color: lightpink;
+} */
+
 button{
     width: var(--btn-width);
     height: var(--btn-height);
@@ -46,7 +54,8 @@ button{
     cursor: pointer;
 }
 
-button.disabled{
+button:disabled
+button[disabled]{
     opacity: 0.6;
     cursor: not-allowed;
 }
