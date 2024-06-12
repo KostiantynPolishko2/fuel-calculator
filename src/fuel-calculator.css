@@ -21,7 +21,7 @@ form{
 form > div{
     width: 90%;
     margin: auto;
-    background-color: aqua;
+    /* background-color: aqua; */
 }
 
 input{
@@ -43,8 +43,8 @@ div.title > p {
 }
 
 div.name{
-    margin-top: 23px;
-    margin-bottom: 12px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 div.name > label {
@@ -66,7 +66,7 @@ div.name > label {
 }
 
 div.input-field > p{
-    background-color: blue;
+    /* background-color: blue; */
     font-size: 20px;
     margin-left: var(--intend-left);
 }
