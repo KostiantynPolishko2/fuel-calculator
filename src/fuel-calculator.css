@@ -4,6 +4,8 @@
     --input-height: 50px;
     --input-width: 400px;
     --intend-left: 15px;
+    --btn-width: 150px;
+    --btn-height: 50px;
 }
 
 *{
@@ -14,7 +16,7 @@
 form{
     height: var(--form-height);
     width: var(--form-width);
-    background-color: grey;
+    background-color: rgb(117, 110, 110);
     align-content: center;
 }
 
@@ -31,6 +33,18 @@ input{
     border-radius: 5px;
 }
 
+button{
+    width: var(--btn-width);
+    height: var(--btn-height);
+    border-radius: calc(var(--btn-height)/5);
+    border: none;
+    background-color: rgb(185, 99, 84);
+    color: white;
+    font-size: 24px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 500;
+}
+
 div.title{
     margin-top: 10px;
 }
@@ -39,7 +53,7 @@ div.title > p {
     font-size: 25px;
     font-weight: 600;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    line-height: 100%;
+    line-height: 90%;
 }
 
 div.name{
@@ -69,8 +83,14 @@ div.input-field > p{
     /* background-color: blue; */
     font-size: 20px;
     margin-left: var(--intend-left);
+    line-height: 90%;
 }
 
 p.note{
     color: red;
+}
+
+p.cost{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 600;
 }
