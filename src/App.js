@@ -6,7 +6,7 @@ function App() {
 
   // disabled={isDistance? 'disabled' : ''}
   const [isDistance, setIsDistance] = useState(false);
-  let [distance, setDistance] = useState(0);
+  const [distance, setDistance] = useState(0);
   
   return (
     <div class='App-header'>
@@ -18,9 +18,9 @@ function App() {
           <label for='distance'>Расстояние</label>
         </div> 
         <div class='input-field'>
-          <input onBlur={(e) => {isDigitValue(e) ? setDistance(getDigitValue(e)) : setDistance(0)}} type='text' id='distance' name='distance_km' placeholder='введите километраж' autoFocus></input>
+          <input onBlur={(e) => {setIsDistance(isDigitValue(e)) ? setDistance(getDigitValue(e)) : setDistance(0)}} type='text' id='distance' name='distance_km' placeholder='введите километраж' autoFocus></input>
           <p>км</p>
-          <p class='note'>Note</p>
+          <p class='note'>{errorInfo(isDistance, distance)}</p>
         </div>
         <div class='input-field' style={{marginTop: 15 + 'px'}}>
           <button type='button' name='cost' form='fuel-calculation'>Рассчитать</button>
@@ -29,6 +29,14 @@ function App() {
       </form>  
     </div>
   );
+}
+
+const errorInfo = (flag, value) => {
+  if(!flag && !value){
+    return !value ? 'uncorrect format' : '';
+  }
+
+  return '';
 }
 
 const isDigitValue = (e) => {
