@@ -1,0 +1,112 @@
+:root{
+    --form-width: 700px;
+    --form-height: 500px;
+    --input-height: 50px;
+    --input-width: 400px;
+    --intend-left: 15px;
+    --btn-width: 150px;
+    --btn-height: 50px;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+form{
+    height: var(--form-height);
+    width: var(--form-width);
+    background-color: rgb(117, 110, 110);
+    align-content: center;
+}
+
+form > div{
+    width: 90%;
+    margin: auto;
+    /* background-color: aqua; */
+}
+
+input{
+    height: var(--input-height);
+    width: var(--input-width);
+    border: 1px solid rgb(204, 204, 204);
+    border-radius: 5px;
+}
+
+input:valid{
+    background-color: palegreen;
+}
+
+/* input:invalid{
+    background-color: lightpink;
+} */
+
+button{
+    width: var(--btn-width);
+    height: var(--btn-height);
+    border-radius: calc(var(--btn-height)/5);
+    border: none;
+    background-color: rgb(185, 99, 84);
+    color: white;
+    font-size: 24px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+button:disabled
+button[disabled]{
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+div.title{
+    margin-top: 10px;
+}
+
+div.title > p {
+    font-size: 25px;
+    font-weight: 600;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    line-height: 90%;
+}
+
+div.name{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+div.name > label {
+    font-size: 18px;
+    font-weight: 500;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.input-field{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.input-field > input {
+    font-size: 24px;
+    text-indent: var(--intend-left);
+    cursor: pointer;
+}
+
+div.input-field > p{
+    /* background-color: blue; */
+    width: 15%;
+    font-size: 20px;
+    margin-left: var(--intend-left);
+    line-height: 90%;
+}
+
+p.note{
+    color: red;
+}
+
+p.cost{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 600;
+}
